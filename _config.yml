@@ -23,7 +23,7 @@ email: devin.cloud.kelly@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   I am an HTML email developer, Rubyist and technical blog-writer for folks from non-technical backgrounds.
   Coming from a non-technical background, there seem to be more questions than answers.
-  Let's discover those answers, one problem at a time.
+  Let's uncover those answers, one problem at a time.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: devincloudkelly
