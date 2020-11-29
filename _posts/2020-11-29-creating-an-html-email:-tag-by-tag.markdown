@@ -1,19 +1,19 @@
 ---
 layout: post
-title: Creating an HTML email; tag-by-tag
+title: Creating an HTML email, element by element
 date: 2020-11-29 09:25:47 -0600
 categories: email
 ---
 
 ## Your first HTML email
 
-Your manager just came to you and said you're now taking over HTML email development because your company's long-time email developer, Neil, has decided to pursue his dream of becoming an actor in Ricola commercials and is going to the Swiss Alps to find a guru who can teach him the ways of the Alpenhorn. You're extremely excited that Neil is pursuing his dreams, but slightly concerned because you know nothing about HTML emails. How hard can it be though?
+Your manager just came to you and said you're now taking over HTML email development because your company's long-time email developer, Neil, has decided to pursue his lifelong dream of becoming an actor in Ricola commercials and is going to the Swiss Alps in search of a guru to teach him the ways of the Alpenhorn. You're extremely excited for Neil, but slightly concerned that you know nothing about HTML emails. How hard can it be though?
 
 You figure it's just like coding a webpage, so you throw a bunch of `<div>` and `<section>` tags together, align everything with flexbox, then send the email to yourself to see how it looks. 
 
-You open the email only to find that it looks terrible. For some reason, this email has decided to ignore all that is right and good with modern web-development. Why would your email do this to you? Did you miss a semicolon somewhere? Did you forget to close a tag? 
+You open the email only to find that it looks terrible. Nothing has rendered as you expected. A flood of doubt, anger and confusion creeps in. For some reason, this email has decided to ignore all that is right and good with modern web-development. Why would your email do this to you? What did you do to deserve this? Did you miss a semicolon somewhere? Did you forget to close a tag? 
 
-No. You just need to change your frame of mind. HTML email development is not web development, and vice versa. 
+No. You just need to change your frame of mind. HTML email development is not web development, and vice versa. You need a new approach.
 
 Luckily, this article serves as a high-level overview of best-practices for constructing `<table>` based HTML emails. This is not the only style of emails you can create, but it is incredibly consistent across email clients, so it is a great place to start. I've broken down how an HTML email is constructed from top to bottom, one element at a time, from `DOCTYPE` through `<body>` tag to provide a better understanding of how each element ultimately affects how your email is rendered. This article is split up by HTML element and includes boilerplate code that can be used in constructing your HTML emails.
 
@@ -41,6 +41,7 @@ As such, much of the code you will be writing when creating HTML emails will be 
 
 For instance, the high-level layout of an HTML email and an HTML web page both follow a similar structural approach. The simplified structure below can serve as a starting point for either an HTML email or web page:
 
+{% highlight html %}
     <!DOCTYPE >
     <html lang="en">
       <head>
@@ -56,6 +57,7 @@ For instance, the high-level layout of an HTML email and an HTML web page both f
       
       </body>
     </html>
+{% endhighlight %}
 
 Once you start building out the individual elements of your HTML email, however, the differences between developing for HTML email and developing for the web become vastly apparent. 
 
@@ -77,7 +79,9 @@ If you're optimizing your HTML email for all email clients, or you're just getti
 
 Your DOCTYPE declaration can be written as follows: 
 
-`<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">`
+{% highlight css %}
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% endhighlight %}
 
 The above `<DOCTYPE>` declaration isn't the only one you can use. Plenty of HTML email developers use some variant of the HTML 4.01 Document Type Declaration. If in doubt, start with XHTML 1.0 Transitional (shown above), then change it up as you get more comfortable with HTML email.
 
@@ -95,6 +99,7 @@ For example, if an American subscriber subscribes to a French newsletter and the
 
 What if your email has multiple languages in it? Let's say you're sending out an email for your language tutoring courses, and wanted to include the phrase "How are you?" in multiple languages? In this case, you would set the `lang` attribute in your `html` element to the predominant language of the email, then specify a different language in a  `span` element for any text in a different language like the example below:
 
+{% highlight html %}
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
         <body>
             <!--Main content of your email-->
@@ -103,6 +108,7 @@ What if your email has multiple languages in it? Let's say you're sending out an
             <p><span lang="vi">Bạn khỏe không?</span></p>
         </body>
     </html>   
+{% endhighlight %}
 
 \* Note, you could set the `lang` in the `<p>` element directly, but if you had other attributes in that element with text values, setting the `lang` attribute would change the language for *those attributes* as well. For that reason, it's safest to wrap just the text in a `<span>` and set the `lang` there.
 
@@ -115,35 +121,46 @@ Since HTML email development involves developing for disparate clients, adding i
 
 One of the common sticking-points for HTML email developers is Outlook. Most versions of Outlook are now rendered by Microsoft Word (yes, that Microsoft Word) and as such, they don't display HTML elements as intuitively as you'd like. To get around this, its common to code fallbacks for the sections of your email that aren't rendering properly in Outlook. For this, you might want to add the following namespace: 
 
+{% highlight html %}
     xmlns:o="urn:schemas-microsoft-com:office:office"
+{% endhighlight %}
 
 Note the `:o` after `xmlns`. This is a prefix and it allows you to designate which namespace the element in your HTML document belongs to. For instance, if `<table>` exists in two namespaces, the code below references the `<table>` element that is found in the XML namespace you designated as `xmlns:o`.
 
+{% highlight html %}
     <o:table>
       <o:tr>
         <o:td>
         </o:td>
       </o:tr>
     </o:table>
+{% endhighlight %}
 
 Another common XML namespace to include would be the one for VML. When you want a reliable background image in your HTML email, VML works great. You can add it with the following: 
 
+{% highlight html %}
     xmlns:v="urn:schemas-microsoft-com:vml"
+{% endhighlight %}
 
 Again, you need to add some designation after the  `xmlns` to allow you to differentiate between namespaces in your HTML document.
 
 Based on what your email goals are, there are two good starting places. If Outlook is not a consideration for your email goals, you can just use the standard XML namespace declaration: 
 
+{% highlight html %}
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+{% endhighlight %}
 
 If, however, you will be designing emails with Outlook in mind, I'd recommend including the `office` and `vml` XML namespaces as you'll likely need them.
 
+{% highlight html %}
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+{% endhighlight %}
  
 ## [head tag](#head)
 
 The `<head>` element will contain metadata about your HTML document. 
 
+{% highlight html %}
     <head>
        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -153,6 +170,7 @@ The `<head>` element will contain metadata about your HTML document.
         <!--ADD @MEDIA QUERIES FOR MOBILE RESPONSIVENESS-->
        </style>
     </head>
+{% endhighlight %}
 
 That metadata will be nested between your opening and closing `<head></head>` tags and will commonly include a `<title>` tag for setting the title on browser views, `<meta>` tags for defining `Content-Type` and `viewport`, and `<style>` tags for your embedded CSS.
 
@@ -162,18 +180,22 @@ This one has limited use, but is still important. First, it is great for accessi
 
 Second, if someone opens your email in the browser, this title will show up on the tab. An example `<title>` tag might look like this: 
 
+{% highlight html %}
     <head>
       <title>How to code an HTML email</title>
     </head>
+{% endhighlight %}
 
 ## [meta tag](#meta)
 
 For `<meta>` tags, there are two that are commonly used; one to define your `Content-Type` and one to define your `viewport`. The `<meta>` element is nested inside your `<head>` element.
 
+{% highlight html %}
      <head>
        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
      </head>
+{% endhighlight %}
 
 The `<meta>` tag that sets your `Content-type` is used to ensure your document is parsed properly by the browser/email client, so you should include this in every document. 
 
@@ -183,7 +205,9 @@ The tag for the `viewport` is important for optimizing for mobile and since the 
 
 If you are optimizing for Windows Phones 7.5 or higher, then you'll want to include the following `<meta>` tag, as it enables CSS3 and media queries for those devices: 
 
+{% highlight html %}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+{% endhighlight %}
     
 When your emails render on iOS you'll notice that it automatically detects phone numbers and dates, styles them as a link and allows you to click them to initiate a call or add to your calendar. 
 
@@ -191,8 +215,10 @@ Most of the time, this is a great built-in feature, but if you are sending other
 
 You can add the following `meta` tags to tell iOS not to automatically detect and format phone numbers and dates:
 
+{% highlight html %}
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="date=no">
+{% endhighlight %}
 
 ## [style tag](#style)
 
@@ -202,7 +228,7 @@ Depending on the email clients you are designing your emails for, the `<style>` 
 
 TIP: I've experienced rendering issues with Gmail on Mobile (specifically with the Pixel) where the email doesn't render as mobile responsive and instead renders the desktop version. I've found this [separate style tags solution on Litmus' forum](https://litmus.com/community/discussions/7437-media-queries-not-rendering-on-gmail-mobile-app) which works great (thanks [Olga Kham](https://ca.linkedin.com/in/olga-kham)!) Separating your media query style resets into their own `<style>` tag gets around the issue where the Gmail mobile app strips out unsupported code. In practice, I now put every distinct set of style resets in their own tag (ex. desktop, mobile, outlook..)
 
-       
+{% highlight html %}
        <!--STYLING RESETS FOR DESKTOP / NON-MOBILE FORMATS-->
        <style type="text/css">
                   
@@ -245,6 +271,7 @@ TIP: I've experienced rendering issues with Gmail on Mobile (specifically with t
          }
        </style>
        <[endif]-->
+{% endhighlight %}
 
 ## [script tag](#script)
 
@@ -256,6 +283,7 @@ If needed, in place of `<script>` elements you can often use microdata in the `<
 
 We're finally here - we can now start to build out our email. The `<body>` of your email will look something like this:
 
+{% highlight html %}
     <body width="100%">
         <div style="display: none; max-height: 0; overflow: hidden;">INSERT YOUR PREHEADER TEXT HERE</div>
         <table class="outer-container" border="0" cellspacing="0" cellpadding="0" width="100%">
@@ -266,6 +294,7 @@ We're finally here - we can now start to build out our email. The `<body>` of yo
             </tr>
         </table>
     </body>
+{% endhighlight %}
     
 We'll go into detail below, but know that HTML email consists of levels and levels of nested table elements. Unlike HTML for web development where `<div>`s are the predominant structural element, you will be structuring all layouts with `<table>`s. 
 
@@ -289,6 +318,7 @@ As far as I can tell, those using the `table`/`tbody`/`tr`/`td` structure are pr
 
 The body of your email will follow a structure similar to below: 
 
+{% highlight html %}
     <body>
         <!--THIS FIRST TABLE WILL BE YOUR OUTER CONTAINER-->
         <table class="outer">
@@ -320,5 +350,6 @@ The body of your email will follow a structure similar to below:
             </tr>
         </table>
     </body>
+{% endhighlight %}
 
-All of your content will be housed in a `<td>` element.
+All of your content will usually be housed in a `<td>` element.
