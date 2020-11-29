@@ -11,7 +11,9 @@ Your manager just came to you and said you're now taking over HTML email develop
 
 You figure it's just like coding a webpage, so you throw a bunch of `<div>` and `<section>` tags together, align everything with flexbox, then send the email to yourself to see how it looks. 
 
-You open the email only to find that it looks terrible. For some reason, this email has decided to ignore all that is right and good with modern web-development. Why would your email do this to you? Did you miss a semicolon somewhere? Did you forget to close a tag? No. You just need to change your frame of mind. HTML email development is not web development, and vice versa. 
+You open the email only to find that it looks terrible. For some reason, this email has decided to ignore all that is right and good with modern web-development. Why would your email do this to you? Did you miss a semicolon somewhere? Did you forget to close a tag? 
+
+No. You just need to change your frame of mind. HTML email development is not web development, and vice versa. 
 
 Luckily, this article serves as a high-level overview of best-practices for constructing `<table>` based HTML emails. This is not the only style of emails you can create, but it is incredibly consistent across email clients, so it is a great place to start. I've broken down how an HTML email is constructed from top to bottom, one element at a time, from `DOCTYPE` through `<body>` tag to provide a better understanding of how each element ultimately affects how your email is rendered. This article is split up by HTML element and includes boilerplate code that can be used in constructing your HTML emails.
 
