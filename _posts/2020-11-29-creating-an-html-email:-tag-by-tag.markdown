@@ -1,3 +1,10 @@
+---
+layout: post
+title: Creating an HTML email; tag-by-tag
+date: 2020-11-29 09:25:47 -0600
+categories: email
+---
+
 ## Your first HTML email
 
 Your manager just came to you and said you're now taking over HTML email development because your company's long-time email developer, Neil, has decided to pursue his dream of becoming an actor in Ricola commercials and is going to the Swiss Alps to find a guru who can teach him the ways of the Alpenhorn. You're extremely excited that Neil is pursuing his dreams, but slightly concerned because you know nothing about HTML emails. How hard can it be though?
