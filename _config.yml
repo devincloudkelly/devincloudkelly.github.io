@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: YEAH, BUT WHO CODES IT?
+title: Yeah, but who codes it?
 email: devin.cloud.kelly@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Devin is an HTML email developer, Rubyist and technical blog-writer for folks from non-technical backgrounds.

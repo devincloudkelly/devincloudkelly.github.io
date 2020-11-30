@@ -7,7 +7,9 @@ categories: email
 
 ## Your first HTML email
 
-Your manager just came to you and said you're now taking over HTML email development because your company's long-time email developer, Neil, has decided to pursue his lifelong dream of becoming an actor in Ricola commercials and is going to the Swiss Alps in search of a guru to teach him the ways of the Alpenhorn. You're extremely excited for Neil, but slightly concerned that you know nothing about HTML emails. How hard can it be though?
+Your manager just came to you and said you're now taking over HTML email development because your company's long-time email developer, Neil, has decided to pursue his lifelong dream of becoming an actor in Ricola commercials and is going to the Swiss Alps in search of a guru to teach him the ways of the Alpenhorn. 
+
+You're extremely excited for Neil, but slightly concerned that you know nothing about HTML emails. How hard can it be though?
 
 You figure it's just like coding a webpage, so you throw a bunch of `<div>` and `<section>` tags together, align everything with flexbox, then send the email to yourself to see how it looks. 
 
@@ -15,9 +17,9 @@ You open the email only to find that it looks terrible. Nothing has rendered as 
 
 No. You just need to change your frame of mind. HTML email development is not web development, and vice versa. You need a new approach.
 
-Luckily, this article serves as a high-level overview of best-practices for constructing `<table>` based HTML emails. This is not the only style of emails you can create, but it is incredibly consistent across email clients, so it is a great place to start. I've broken down how an HTML email is constructed from top to bottom, one element at a time, from `DOCTYPE` through `<body>` tag to provide a better understanding of how each element ultimately affects how your email is rendered. This article is split up by HTML element and includes boilerplate code that can be used in constructing your HTML emails.
+Luckily, this article serves as a high-level overview of best-practices for constructing `<table>` based HTML emails. This is not the only style of emails you can create, but it is incredibly consistent across email clients, so it is a great place to start. I've broken down how an HTML email is constructed from top to bottom, one element at a time, from `DOCTYPE` through `<body>` tag to provide a better understanding of how each element ultimately affects how your email is rendered. This article is split up by HTML element and includes boilerplate code that can be used freely in constructing your HTML emails.
 
-The standards detailed in this overview come from personal experience, the resources linked to throughout this document, and an informal survey comparing code from a variety of HTML emails found on [Really Good Emails](https://reallygoodemails.com/).
+The standards detailed in this overview come from personal experience, the resources linked to throughout this document, tips from other email geeks, and an informal survey comparing code from a variety of HTML emails found on [Really Good Emails](https://reallygoodemails.com/).
 
 ## Table of contents
 
@@ -332,14 +334,14 @@ The body of your email will follow a structure similar to below:
                         </td>
                     </tr>
                 </table>
-                <table class="header">
+                <table class="body">
                     <tr>
                         <td>
                             <!--ADD BODY CONTENT HERE-->
                         </td>
                     </tr>
                 </table>
-                <table class="header">
+                <table class="footer">
                     <tr>
                         <td>
                             <!--ADD FOOTER CONTENT HERE-->
