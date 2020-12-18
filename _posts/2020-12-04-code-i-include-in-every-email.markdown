@@ -23,7 +23,7 @@ Months of reading, coding, testing and asking a lot of questions led to the code
 
 ### Separate style tags
 
-When I first started creating emails, I kept all of my style resets inside one `<style>` tag in the head of the document, except for Outlook style resets. I had no idea I was doing anything wrong when I did this, but at the time I did notice that emails were consistently rendering poorly when I tested them for Pixel phones using Gmail.
+When I first started creating emails, I kept all of my style resets inside one `<style>` tag in the head of the document, except for Outlook style resets. I had no idea I was doing anything wrong when I did this, but at the time I did notice that emails were consistently rendering poorly when I tested them for Pixel phones using Gmail. 
 
-At first this made no sense to me: I was using `@media` queries to target mobile phones, and the Pixel is, indeed, a mobile phone, so why wasn't it rendering properly?
+At first this made no sense to me; I was using `@media` queries to target mobile phones, and the Pixel is, indeed, a mobile phone, so why wasn't it rendering properly?
 
