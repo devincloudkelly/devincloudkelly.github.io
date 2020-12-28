@@ -28,49 +28,47 @@ When I first started creating emails, I kept all of my style resets inside one `
 
 
 #### How I used to write my `style` tags
-        <head>
-            <meta>
-            <meta>
-            <title>How I used to write Style tags</title>
+{% highlight html %}
 
-            <!--STYLING RESETS FOR DESKTOP /& MOBILE FORMATS-->
-            <style type="text/css">
-                        
-                h1 {
-                    font-size: 22px;
-                    line-height: 30px;
-                }
-                p {
-                    font-size: 16px; 
-                    line-height: 20px;
-                }
-                table {
-                    border: 0 !important;
-                }
-                .desktop-button {
-                    width: 50%;
-                }
-
-                <!--Media queries for mobile-responsiveness-->
+    <!--STYLING RESETS FOR DESKTOP /& MOBILE FORMATS-->
+    <style type="text/css">
                 
-                @media only screen and (max-width: 660px) {
-                    .mobile-center {
-                        text-align: center !important;
-                    }
-                } 
-            </style>
-            
-            
-            <!--SEPARATE STYLESHEET FOR OUTLOOK-->
-            
-            <!--[if mso]>
-                <style>
-                    p {
-                        font-size: 100% !important;
-                    }
-                </style>
-            <[endif]-->
-        </head>
+        h1 {
+            font-size: 22px;
+            line-height: 30px;
+        }
+        p {
+            font-size: 16px; 
+            line-height: 20px;
+        }
+        table {
+            border: 0 !important;
+        }
+        .desktop-button {
+            width: 50%;
+        }
+
+        <!--Media queries for mobile-responsiveness-->
+        
+        @media only screen and (max-width: 660px) {
+            .mobile-center {
+                text-align: center !important;
+            }
+        } 
+    </style>
+    
+    
+    <!--SEPARATE STYLESHEET FOR OUTLOOK-->
+    
+    <!--[if mso]>
+        <style>
+            p {
+                font-size: 100% !important;
+            }
+        </style>
+    <[endif]-->
+
+{% endhighlight %}
 
 
 
@@ -81,49 +79,52 @@ The issue here is that if Gmail encounters an issue with your `style` block, ins
 
 
 #### How I write my `style` tags now
-        <!--STYLING RESETS FOR DESKTOP / NON-MOBILE FORMATS-->
-        <style type="text/css">
-                    
-            h1 {
-                font-size: 22px;
-                line-height: 30px;
-            }
-            p {
-                font-size: 16px; 
-                line-height: 20px;
-            }
-            table {
-                border: 0 !important;
-            }
-            .desktop-button {
-                width: 50%;
-            }
-        </style>
-            
-            
-        <!--STYLING RESETS FOR MOBILE ARE NOW IN SEPARATE STYLE TAG-->
-            
-        <style type="text/css">
-            <!--Media queries for mobile-responsiveness-->
-            
-            @media only screen and (max-width: 660px) {
-                .mobile-center {
-                    text-align: center !important;
-                }
-            } 
-        </style>
-        
-        
-        <!--SEPARATE STYLESHEET FOR OUTLOOK-->
-        
-        <!--[if mso]>
-            <style>
-                p {
-                    ont-size: 100% !important;
-                }
-            </style>
-        <[endif]-->
+{% highlight html %}
 
+    <!--STYLING RESETS FOR DESKTOP / NON-MOBILE FORMATS-->
+    <style type="text/css">
+                
+        h1 {
+            font-size: 22px;
+            line-height: 30px;
+        }
+        p {
+            font-size: 16px; 
+            line-height: 20px;
+        }
+        table {
+            border: 0 !important;
+        }
+        .desktop-button {
+            width: 50%;
+        }
+    </style>
+        
+        
+    <!--STYLING RESETS FOR MOBILE ARE NOW IN SEPARATE STYLE TAG-->
+        
+    <style type="text/css">
+        <!--Media queries for mobile-responsiveness-->
+        
+        @media only screen and (max-width: 660px) {
+            .mobile-center {
+                text-align: center !important;
+            }
+        } 
+    </style>
+
+
+    <!--SEPARATE STYLESHEET FOR OUTLOOK-->
+
+    <!--[if mso]>
+        <style>
+            p {
+                ont-size: 100% !important;
+            }
+        </style>
+    <[endif]-->
+
+{% endhighlight %}
 
 
 ### HTML Header & XML Namespaces
