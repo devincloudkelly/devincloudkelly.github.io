@@ -23,7 +23,43 @@ Months of reading, coding, testing and asking a lot of questions led to the code
 
 ### Separate style tags
 
-When I first started creating emails, I kept all of my style resets inside one `<style>` tag in the head of the document, except for Outlook style resets. I had no idea I was doing anything wrong when I did this, but for some reason, email renders for the Pixel using Gmail would render the desktop version of the email instead of mobile...
+When I first started creating emails, I kept all of my style resets inside one `<style>` tag in the head of the document, except for Outlook style resets. I was convinced that if I was using `@media` queries to make my emails mobile-responsive, my emails would render properly on all mobile devices. I had no idea I was doing anything wrong when I did this, but for some reason, email renders for the Pixel using Gmail would render the desktop version of the email instead of mobile...
 
-This is a known bug with 
+
+#### How I used to write my `style` tags
+        <head>
+            <meta>
+            <meta>
+            <title>How I used to write Style tags</title>
+
+            <style type='text/css'>
+            <!-- ALL OF MY DESKTOP RESETS WOULD GO HERE -->
+                body {
+                    padding: 30px;
+                }
+                .
+                .
+
+                @media screen and (max-width: 560px) {
+                    <!-- ALL OF MY MOBILE-RESPONSIVE RESETS WOULD GO HERE -->
+                    body {
+                        padding: 10px;
+                    }
+                    .
+                    .
+                }
+
+            </style>
+            
+            <!--[if mso]>
+            <style>
+                <!-- ALL OF MY OUTLOOK RESETS GO HERE ~ NOTE THE DIFFERENT STYLE ELEMENT FOR OUTLOOK -->
+            </style>
+            <[endif]-->
+        </head>
+
+
+One of the things you learn early on in HTML email development is how opinionated the different email clients are, and in this case, I learned that this was an issue with how Gmail renders emails.
+
+The issue here is that if Gmail encounters an issue with your `style` block, instead of working around it, it gets rid of that entire `style` element. So in this case, if there's something that Gmail doesn't like in the desktop resets of your `style` element, and all of your style resets are in one `style` element, the entire thing gets thrown out. To avoid this, I now use several sections 
 
