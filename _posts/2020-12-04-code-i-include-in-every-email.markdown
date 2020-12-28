@@ -13,13 +13,11 @@ But there was also a part of me that thought it would be easy. So easy, in fact,
 
 Wrong.
 
-So I want to take this time to apologize to any of the readers on those first few emails I sent out. If there were odd spacing issues in any of those Outlook emails you received, it wasn't personal. Honest.
-
-Luckily for me, my past entrepreneurial endeavours taught me to fail fast and innovate faster, so I removed my ego from the equation and started scouring the web to find the best solutions to the issues I was having in the beginning.
+I made mistakes and ran into issues almost immediately, which was great! It meant I also started to form a deeper understanding of HTML email almost immediately.
 
 Months of reading, coding, testing and asking a lot of questions led to the code snippets below, which I now include in every one of my emails.
 
-> NOTE: These snippets are in addition to the standard code that should be included in each of your HTML emails, such as your CSS resets, `<meta>` tags, etc.
+NOTE: These snippets are in addition to the standard code that should be included in each of your HTML emails, such as your CSS resets, `<meta>` tags, etc.
 
 ### Separate style tags
 
@@ -128,3 +126,4 @@ The issue here is that if Gmail encounters an issue with your `style` block, ins
 
 
 ### HTML Header & XML Namespaces
+
