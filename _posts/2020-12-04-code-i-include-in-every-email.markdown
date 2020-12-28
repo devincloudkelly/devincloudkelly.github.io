@@ -32,28 +32,41 @@ When I first started creating emails, I kept all of my style resets inside one `
             <meta>
             <title>How I used to write Style tags</title>
 
-            <style type='text/css'>
-            <!-- ALL OF MY DESKTOP RESETS WOULD GO HERE -->
-                body {
-                    padding: 30px;
+            <!--STYLING RESETS FOR DESKTOP /& MOBILE FORMATS-->
+            <style type="text/css">
+                        
+                h1 {
+                font-size: 22px;
+                line-height: 30px;
                 }
-                .
-                .
-
-                @media screen and (max-width: 560px) {
-                    <!-- ALL OF MY MOBILE-RESPONSIVE RESETS WOULD GO HERE -->
-                    body {
-                        padding: 10px;
-                    }
-                    .
-                    .
+                p {
+                font-size: 16px; 
+                line-height: 20px;
+                }
+                table {
+                border: 0 !important;
+                }
+                .desktop-button {
+                width: 50%;
                 }
 
+                <!--Media queries for mobile-responsiveness-->
+                
+                @media only screen and (max-width: 660px) {
+                .mobile-center {
+                text-align: center !important;
+                }
+                } 
             </style>
             
+            
+            <!--SEPARATE STYLESHEET FOR OUTLOOK-->
+            
             <!--[if mso]>
-            <style>
-                <!-- ALL OF MY OUTLOOK RESETS GO HERE ~ NOTE THE DIFFERENT STYLE ELEMENT FOR OUTLOOK -->
+                <style>
+                p {
+                font-size: 100% !important;
+                }
             </style>
             <[endif]-->
         </head>
@@ -61,5 +74,50 @@ When I first started creating emails, I kept all of my style resets inside one `
 
 One of the things you learn early on in HTML email development is how opinionated the different email clients are, and in this case, I learned that this was an issue with how Gmail renders emails.
 
-The issue here is that if Gmail encounters an issue with your `style` block, instead of working around it, it gets rid of that entire `style` element. So in this case, if there's something that Gmail doesn't like in the desktop resets of your `style` element, and all of your style resets are in one `style` element, the entire thing gets thrown out. To avoid this, I now use several sections 
+The issue here is that if Gmail encounters an issue with your `style` block, instead of working around it, it gets rid of that entire `style` element. So in this case, if there's something that Gmail doesn't like in the desktop resets of your `style` element, and all of your style resets are in one `style` element, the entire thing gets thrown out. To avoid this, I now use several `style` elements as shown below:
 
+
+        <!--STYLING RESETS FOR DESKTOP / NON-MOBILE FORMATS-->
+        <style type="text/css">
+                    
+            h1 {
+            font-size: 22px;
+            line-height: 30px;
+            }
+            p {
+            font-size: 16px; 
+            line-height: 20px;
+            }
+            table {
+            border: 0 !important;
+            }
+            .desktop-button {
+            width: 50%;
+            }
+        </style>
+            
+            
+        <!--STYLING RESETS FOR MOBILE ARE NOW IN SEPARATE STYLE TAG-->
+            
+        <style type="text/css">
+            <!--Media queries for mobile-responsiveness-->
+            
+            @media only screen and (max-width: 660px) {
+            .mobile-center {
+            text-align: center !important;
+            }
+            } 
+        </style>
+        
+        
+        <!--SEPARATE STYLESHEET FOR OUTLOOK-->
+        
+        <!--[if mso]>
+            <style>
+            p {
+            font-size: 100% !important;
+            }
+        </style>
+        <[endif]-->
+
+### HTML Header & XML Namespaces
