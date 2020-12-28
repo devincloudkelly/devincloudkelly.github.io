@@ -26,6 +26,7 @@ Months of reading, coding, testing and asking a lot of questions led to the code
 When I first started creating emails, I kept all of my style resets inside one `<style>` tag in the head of the document, except for Outlook style resets. I was convinced that if I was using `@media` queries to make my emails mobile-responsive, my emails would render properly on all mobile devices. I had no idea I was doing anything wrong when I did this, but for some reason, email renders for the Pixel using Gmail would render the desktop version of the email instead of mobile...
 
 
+
 #### How I used to write my `style` tags
         <head>
             <meta>
@@ -36,26 +37,26 @@ When I first started creating emails, I kept all of my style resets inside one `
             <style type="text/css">
                         
                 h1 {
-                font-size: 22px;
-                line-height: 30px;
+                    font-size: 22px;
+                    line-height: 30px;
                 }
                 p {
-                font-size: 16px; 
-                line-height: 20px;
+                    font-size: 16px; 
+                    line-height: 20px;
                 }
                 table {
-                border: 0 !important;
+                    border: 0 !important;
                 }
                 .desktop-button {
-                width: 50%;
+                    width: 50%;
                 }
 
                 <!--Media queries for mobile-responsiveness-->
                 
                 @media only screen and (max-width: 660px) {
-                .mobile-center {
-                text-align: center !important;
-                }
+                    .mobile-center {
+                        text-align: center !important;
+                    }
                 } 
             </style>
             
@@ -64,12 +65,13 @@ When I first started creating emails, I kept all of my style resets inside one `
             
             <!--[if mso]>
                 <style>
-                p {
-                font-size: 100% !important;
-                }
-            </style>
+                    p {
+                        font-size: 100% !important;
+                    }
+                </style>
             <[endif]-->
         </head>
+
 
 
 One of the things you learn early on in HTML email development is how opinionated the different email clients are, and in this case, I learned that this was an issue with how Gmail renders emails.
@@ -77,22 +79,24 @@ One of the things you learn early on in HTML email development is how opinionate
 The issue here is that if Gmail encounters an issue with your `style` block, instead of working around it, it gets rid of that entire `style` element. So in this case, if there's something that Gmail doesn't like in the desktop resets of your `style` element, and all of your style resets are in one `style` element, the entire thing gets thrown out. To avoid this, I now use several `style` elements as shown below:
 
 
+
+#### How I write my `style` tags now
         <!--STYLING RESETS FOR DESKTOP / NON-MOBILE FORMATS-->
         <style type="text/css">
                     
             h1 {
-            font-size: 22px;
-            line-height: 30px;
+                font-size: 22px;
+                line-height: 30px;
             }
             p {
-            font-size: 16px; 
-            line-height: 20px;
+                font-size: 16px; 
+                line-height: 20px;
             }
             table {
-            border: 0 !important;
+                border: 0 !important;
             }
             .desktop-button {
-            width: 50%;
+                width: 50%;
             }
         </style>
             
@@ -103,9 +107,9 @@ The issue here is that if Gmail encounters an issue with your `style` block, ins
             <!--Media queries for mobile-responsiveness-->
             
             @media only screen and (max-width: 660px) {
-            .mobile-center {
-            text-align: center !important;
-            }
+                .mobile-center {
+                    text-align: center !important;
+                }
             } 
         </style>
         
@@ -114,10 +118,12 @@ The issue here is that if Gmail encounters an issue with your `style` block, ins
         
         <!--[if mso]>
             <style>
-            p {
-            font-size: 100% !important;
-            }
-        </style>
+                p {
+                    ont-size: 100% !important;
+                }
+            </style>
         <[endif]-->
+
+
 
 ### HTML Header & XML Namespaces
