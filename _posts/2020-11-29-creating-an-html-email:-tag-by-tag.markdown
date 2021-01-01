@@ -354,4 +354,6 @@ The body of your email will follow a structure similar to below:
     </body>
 {% endhighlight %}
 
-All of your content will usually be housed in a `<td>` element.
+All of your content will usually be housed in a `<td>` element, so you can plug in your images, lists, etc. there. 
+
+For more a more detailed look at the body construction, there are numerous free HTML templates already out there, or take a minute to look through the code of some emails that you like on [Really Good Emails](https://reallygoodemails.com), it is a great resource. 
