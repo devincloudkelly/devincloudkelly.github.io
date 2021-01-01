@@ -124,6 +124,45 @@ The issue here is that if Gmail encounters an issue with your `style` block, ins
 
 {% endhighlight %}
 
+### Outlook DPI Fix
+
+This was a scary one to find out.
+
+It was a classic case of "what you don't know CAN hurt you".
+
+I was progressing in my role and felt like I had a good grip on the emails I was sending out, when one of my co-workers replied to a proof I sent out with the words none of us wants to hear, "This email is broken for me."
+
+The hero image was rendering at the standard width I designated in the email ,but the body was wider than it should have been, making the email overall look disproportionate and wholly wrong.
+
+I started sweating, my stomach dropped and I started questioning everything. 
+
+<blockquote>It was a classic case of "what you don't know CAN hurt you".</blockquote>
+
+There was only one thing to do - get to the bottom of this issue. After tweaking the code, googling and testing the renders with my coworker we finally discovered the issue. She had just been issued a new work laptop and the DPI resolution on her Outlook client was set higher than standard. Luckily, this is a well documented issue and the resolution was quick enough. 
+
+To fix this, you need to add two things to the `<head>` of your code: an XML namespace for Microsoft and then a reset for DPI resolution on Outlook. Here's what that code looks like:
+
+#### XML:O namespace
+
+{% highlight html %}
+    <!-- INCLUDE THE XML:O IN YOUR HTML TAG IF IT ISN'T ALREADY THERE -->
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
+{% endhighlight %}
+
+
+#### Outlook DPI Resolution Reset
+
+{% highlight html %}
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+        <o:AllowPNG/>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+{% endhighlight %}
+
 
 ### HTML Header & XML Namespaces
 
@@ -169,3 +208,4 @@ If, however, you will be designing emails with Outlook in mind, I'd recommend in
 {% highlight html %}
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
 {% endhighlight %}
+
