@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Code I include in every email
+title: Code I include in every email (that I didn't when I started...)
 date: 2020-12-04 09:25:47 -0600
 categories: email
 ---
@@ -127,3 +127,14 @@ The issue here is that if Gmail encounters an issue with your `style` block, ins
 
 ### HTML Header & XML Namespaces
 
+This one was a great learning opportunity for me. While creating HTML emails, I ended up including a lot of fixes and workarounds for Outlook emails, especially 'bulletproof' fixes such as bulletproof buttons, and bulletproof backgrounds. Most of these fixes involved using `VML`, which I came to learn could be accessed by adding `XML` namespaces to your header. 
+
+
+In a nutshell, declaring `XML` namespaces in your `<html>` element is a way of accessing the elements of another markup language (in addition to the HTML you're already using, such as `<div>`, `<table>`, or `<p>`) in your `HTML` document. 
+
+#### HTML element with XML namespaces for VML
+
+    {% highlight html %}
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+
+    {% endhighlight %}
